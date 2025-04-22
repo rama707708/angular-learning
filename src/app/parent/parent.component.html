@@ -1,0 +1,37 @@
+<app-child 
+
+[name]="parentName"
+(emitEmojiselected)="showEmoji($event)"
+(changeNameEvent)="changeName($event) ">
+</app-child>
+<h2>Selected Emoji: {{ selectedEmoji }}</h2>
+<ul>
+  <li *ngFor="let name of names; let i = index">
+{{ name }}
+
+<button [id]="'edit-' + i"  (click)="onEdit(i)">Edit</button>
+<button [id]="'delete-' + i"  (click)="onDelete(i)">Delete</button>
+<p>Current parentName: {{parentName}}</p>
+</li>
+</ul>
+
+<div style="padding: 20px;">
+  <h2>Angular Lifecycle Demo</h2>
+  <label>
+    Enter value:
+    <input [(ngModel)]="parentData" />
+  </label>
+
+  <button (click)="toggleChild()">
+    {{ showChild ? 'Destroy Child' : 'Show Child' }}
+  </button>
+
+  <!-- <app-logger *ngIf="showChild" [data]="parentData"></app-logger>
+</div> -->
+
+<!-- <button (click)="isActive = !isActive">Toggle</button> -->
+
+<!-- <p [ngClass]="{ 'active-class': isActive }">
+  This text is {{ isActive ? 'active' : 'inactive' }}.
+</p> -->
+

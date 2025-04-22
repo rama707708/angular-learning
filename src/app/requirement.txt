@@ -1,0 +1,16 @@
+*********************************
+REQUIREMENTS:
+********************************
+Add product using product component
+List the added product in product list component
+In product list component each product should have add to cart button
+On clicking the button product should add to the cart
+*****************************
+Next step: Validation
+****************************
+Add validation to the product component - price should be greater than 0 and it should have unique name
+In cart - if the product is already available increase the count and show price
+show sum value in cart
+In cart on clicking remove button - instead of removing product from cart decrease count by one.
+In cart if the product count is already one then remove the product from cart
+
