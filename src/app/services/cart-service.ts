@@ -5,6 +5,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class CartService {
+  
   private cart = new BehaviorSubject<any[]>([]);
   cart$ = this.cart.asObservable();
 

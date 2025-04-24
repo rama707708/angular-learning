@@ -1,0 +1,22 @@
+.carttable{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  table, th, td {
+    border:1px solid black;
+    width: 50%;
+    align-items: center;
+  }
+
+.button{
+border-radius: 0%;
+  }
+
+  .clearbutton{
+display: flex;
+justify-content: center;
+align-content: center;
+margin-top:50px;
+  }

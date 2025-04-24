@@ -1,0 +1,44 @@
+/* product-list.component.css */
+
+/* Container for the search bar */
+.search-container {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Styling the input field */
+.search-container input[type="text"] {
+  width: 300px;
+  padding: 10px 12px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Focus style */
+.search-container input[type="text"]:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.4);
+}
+
+/* Validation error message */
+.text-danger {
+  color: red;
+  font-size: 0.85rem;
+  margin-left: 10px;
+}
+
+table, th, td {
+  border:1px solid black;
+  width: 50%;
+  align-items: center;
+}
+
+.producttable{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

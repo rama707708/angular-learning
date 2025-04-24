@@ -1,8 +1,29 @@
-<div *ngFor="let item of cart; let i = index">
-    {{ item.name }} - {{ item.price | currency }}
-    <button (click)="remove(i)">Remove</button>
-   
-  </div>
-  <div>
-    <button *ngIf="cart && cart.length>0" (click)="clear()">clear</button>
-  </div>
+
+  
+  <!-- <div>Total: {{total}}</div> -->
+
+  <div class="carttable" *ngIf="cartItems && cartItems.length>0"> 
+    <table>
+        <tr>
+          <th>Product</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Total</th>
+          <th>Actions</th>
+        </tr>
+        <tr *ngFor="let item of cartItems;  let i = index">
+          <td>{{item.product}}</td>
+          <td>{{item.price}}</td>
+          <td>{{item.quantity}}</td>
+          <td>{{total}}</td>
+          <td><button class="btn btn-primary" (click)="remove(i)">Remove</button></td>
+        </tr>
+      </table>
+    </div>
+    <!-- <div *ngFor="let item of cartItems; let i = index"> -->
+      <!-- {{ item.product }} - {{ item.price | currency }} - {{item.quantity}} -->
+      <!-- <button (click)="remove(i)">Remove</button>  
+    </div> -->
+    <div class="clearbutton">
+      <button *ngIf="cartItems && cartItems.length>0" class="btn btn-danger button" (click)="clear()">clear</button>
+    </div>

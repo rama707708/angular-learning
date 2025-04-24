@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import{productservice} from './../services/product-service'
 
@@ -10,13 +10,35 @@ import{productservice} from './../services/product-service'
   templateUrl: './product.component.html',
   styleUrl: './product.component.css'
 })
-export class ProductComponent {
+export class ProductComponent implements OnInit{
+productList:any[]=[];
+products:any[]=[];
 product='';
 price=0;
 constructor(private productService:productservice) {}
+  ngOnInit(): void {
+    
+    this.productService.product$.subscribe(products => {
+      this.productList = products;
+    });
+  }
 
 addProdct(){
-  this.productService.addProduct({product:this.product,price:this.price})
+const filteredProducts = this.productList.filter(product => product.product === this.product);
+if(filteredProducts&&filteredProducts.length>0)
+{
+  alert('product exist');
+    return;
 }
+if(this.price<=0){
+  alert('price should be greater than 0');
+  return;
 
+}
+ this.products.push({product:this.product,price:this.price})
+  this.productService.addProduct({product:this.product,price:this.price});
+  this.product='';
+  this.price=0;
+  
+}
 }

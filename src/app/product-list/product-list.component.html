@@ -1,2 +1,37 @@
-<button (click)="addProduct()">Add Product</button>
+<div class="search-container">
+    <input
+      type="text"
+      name="search"
+      [(ngModel)]="searchTerm"
+      (input)="filterProducts()"
+      
+    />
+    <!-- <button (click)="filterProducts()">Search</button> -->
+    <!-- <div *ngIf="searchInput.invalid && searchInput.touched" class="text-danger">
+        Search term is required. #searchInput="ngModel"
+      </div> -->
+    </div>
+    <div *ngIf="filteredProductList.length === 0 && searchTerm.trim()">
+        <p class="no-results">No products found for "{{ searchTerm }}"</p>
+      </div>
 
+<!-- <div *ngFor="let product of filteredProductList" >
+  {{product.product}}-{{product.price}}
+  <button class="btn btn-primary" *ngIf="product" (click)="addToCart(product)">Add</button>
+</div> -->
+
+<div class="producttable"> 
+<table>
+    <tr>
+      <th>Product</th>
+      <th>Price</th>
+      <th>Action</th>
+    </tr>
+    <tr *ngFor="let product of filteredProductList">
+      <td>{{product.product}}</td>
+      <td>{{product.price}}</td>
+      <td><button class="btn btn-primary button" *ngIf="product" (click)="addToCart(product)">Add</button></td>
+    </tr>
+
+  </table>
+</div>
