@@ -20,10 +20,7 @@ price = 0;
 constructor(private productService:productservice, private userservice:UserService) {}
 
   ngOnInit() {
-   this.userservice.getUser().subscribe(
-    (res:any) => console.log('Login successful:', res),
-    (err:any) => console.error('Login failed:', err)
-  );
+   
  
 
   this.productService.product$.subscribe(products => {

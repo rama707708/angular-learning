@@ -7,14 +7,16 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class UserService {
 
+
   constructor(private http: HttpClient) { 
 
   }
-  getUser()
+// Suggested code may be subject to a license. Learn more: ~LicenseLog:1524749763.
+  getUser(username:string,password:string)
   {
     const body = {
-      username: 'emilys',
-      password: 'emilyspass'
+      username: username,
+      password: password
     };
     return this.http.post('https://dummyjson.com/auth/login', body, {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
