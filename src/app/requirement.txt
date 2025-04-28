@@ -15,3 +15,10 @@ show sum value in cart
 In cart on clicking remove button - instead of removing product from cart decrease count by one.
 In cart if the product count is already one then remove the product from cart
 *****************************************
+3 components-in each component -name-date-in-and out time
+radio button-tea/coffee.
+hobbies
+dropdown-cities
+
+
+
