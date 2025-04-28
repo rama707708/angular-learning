@@ -1,14 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
   
 })
 export class UserService {
-
+  userInfo = new BehaviorSubject<any>(null);
+//$userInfo = this.userInfo.asObservable();
 
   constructor(private http: HttpClient) { 
+
 
   }
 // Suggested code may be subject to a license. Learn more: ~LicenseLog:1524749763.
@@ -23,4 +26,5 @@ export class UserService {
       withCredentials: false // <-- important
     })
 }
+
 }

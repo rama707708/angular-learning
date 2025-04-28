@@ -9,6 +9,8 @@ import { ProductComponent } from './product/product.component';
 import { CartComponent } from './cart/cart.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
+import { LogoutComponent } from './logout/logout.component';
 
 export const routes: Routes = [
     {
@@ -20,6 +22,10 @@ export const routes: Routes = [
         path: '',
         component:AppNavComponent,
         children: [
+            {
+                path:'home', component:HomeComponent,
+            },
+         
             {
                 path:'child', component:ChildComponent
             },
@@ -44,7 +50,9 @@ export const routes: Routes = [
             {
                 path:'login', component:LoginComponent,
             },
-         
+            {
+                path:'logout', component:LogoutComponent,
+            },
 
         ]
     }

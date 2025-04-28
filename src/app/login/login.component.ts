@@ -24,9 +24,10 @@ this.userService.getUser(this.username,this.password).subscribe((res:any)=>
 console.log(res)
 if(res){
   const user=JSON.stringify(res);
+  this.userService.userInfo.next(user);
   console.log(user);
   sessionStorage.setItem('userinfo',user);
-  this.router.navigate(['/productlist']);
+  this.router.navigate(['/home']);
 
 }
 
@@ -42,5 +43,7 @@ if(res){
   }
 });
 }
+
+
 }
 
