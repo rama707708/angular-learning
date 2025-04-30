@@ -1,0 +1,70 @@
+<!-- Suggested code may be subject to a license. Learn more: ~LicenseLog:1035619298. -->
+<div class="userform">
+<form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+<label>Name:</label>
+<input type="text" name="name" [(ngModel)]="name" #username="ngModel" pattern="^[A-Za-z ]+$" required/>
+<div *ngIf="(username?.errors?.['required'] && (username?.touched || userForm.submitted))" class="errormes">Name is required</div>
+<div *ngIf="(username?.errors?.['pattern'] && (username?.touched || userForm.submitted))" class="errormes">Name should contain only alphabets</div>
+
+<br/>
+<br/>
+
+<label>Date:</label>
+<input type="date"  name="date" [(ngModel)]="date" #date="ngModel" required/>
+<div *ngIf="date.invalid && (date.touched || userForm.submitted)" class="errormes">Date is required</div>
+
+<br/>
+<br/>
+
+<label>Time in:</label>
+<input type="time" name="timein" [(ngModel)]="timein"/>
+<br/>
+<br/>
+<label>Time out:</label>
+<input type="time"  name="timeout" [(ngModel)]="timeout"/>
+<br/>
+<br/>
+
+<label>Signup:</label>
+<input type="radio" name="decsion" [(ngModel)]="decsion" required #decisionRef="ngModel" value="yes"/>Yes
+<input type="radio" name="decsion" [(ngModel)]="decsion" value="no"/>No
+<div *ngIf="decisionRef.touched && decisionRef.errors?.['required']" class="errormes">Decsion is required 
+
+</div>
+<div *ngIf="decisionRef.invalid && userForm.submitted" class="errormes">
+  Please select Yes or No
+</div>
+<br/>
+<br/>
+
+<label>Hobbies:</label>
+<input type="checkbox" name="Reading" required [(ngModel)]="Reading" #readingRef="ngModel" /> Reading
+<input type="checkbox" name="Coding" required [(ngModel)]="Coding" #codingRef="ngModel"/>Coding
+<input type="checkbox" name="Traveling" required [(ngModel)]="Traveling" #travelingRef="ngModel"/>Traveling
+<div *ngIf="hobbiesInvalid && userForm.submitted" class="errormes">
+  Please select at least one hobby.
+</div>
+<br/>
+<br/>
+
+<label>your favorite cities:</label>
+
+<select name="options" id="options" [(ngModel)]="selectedCity"
+required 
+#cityRef="ngModel">
+
+    <option value="">-- Select a city --</option>
+    <option value="delhi">delhi</option>
+    <option value="hyderbad">hyderbad</option>
+    <option value="chennai">chennai</option>
+    <option value="vijayawada">vijayawada</option>
+
+  </select>
+  <div *ngIf="(cityRef.invalid && (cityRef.touched || userForm.submitted))" class="errormes">
+    Please select a city.
+  </div>
+  <button type="submit" >Submit</button>
+</form>
+
+
+</div>
