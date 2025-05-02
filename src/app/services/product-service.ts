@@ -20,10 +20,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
     this.products.next(currentproduct);
     }
 
-  async getProducts(){
-
-  return await fetch('https://dummyjson.com/products')
-}
-   
+  async getProducts(): Promise<any>{
+     return await this.http.get('https://dummyjson.com/products').toPromise();
+  }
 
   }
