@@ -21,15 +21,16 @@ export class LoginComponent {
   login(){
 this.userService.getUser(this.username,this.password).subscribe((res:any)=>
     {
-console.log(res)
-if(res){
-  const user=JSON.stringify(res);
-  this.userService.userInfo.next(user);
-  console.log(user);
-  sessionStorage.setItem('userinfo',user);
-  this.router.navigate(['/home']);
+      console.log(res);
+      if (res) {
+        const accessToken = res.token;
+        const user = JSON.stringify({ accessToken });
+        this.userService.userInfo.next(user);
+        console.log(user);
+        sessionStorage.setItem('userinfo', user);
+        this.router.navigate(['/home']);
+      }
 
-}
 
     },
     (error) => {
@@ -43,7 +44,4 @@ if(res){
   }
 });
 }
-
-
 }
-

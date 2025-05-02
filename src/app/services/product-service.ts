@@ -1,10 +1,16 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
     providedIn: 'root'
   })
+  
   export class productservice {
+    constructor(private http: HttpClient) { 
+
+
+    }
     private products = new BehaviorSubject<any[]>([]);
     product$ = this.products.asObservable();
 
@@ -13,4 +19,11 @@ import { BehaviorSubject } from 'rxjs';
     currentproduct.push(item);
     this.products.next(currentproduct);
     }
+
+  async getProducts(){
+
+  return await fetch('https://dummyjson.com/products')
+}
+   
+
   }
