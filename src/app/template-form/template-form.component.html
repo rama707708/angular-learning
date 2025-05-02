@@ -8,20 +8,32 @@
 
 <br/>
 <br/>
-
-<label>Date:</label>
-<input type="date"  name="date" [(ngModel)]="date" #date="ngModel" required/>
-<div *ngIf="date.invalid && (date.touched || userForm.submitted)" class="errormes">Date is required</div>
-
+<div class="row col-12">
+  <div class="col">
+<label>Date1:</label>
+<input type="date"  name="date1" [(ngModel)]="date1" #dateref="ngModel" (change)="onStartDateChange()" required/>
+<div *ngIf="dateref.invalid && (dateref.touched || userForm.submitted)" class="errormes">Date is required</div>
+</div>
+<div class="col">
+<label>Date2:</label>
+<input type="date"  name="date2" [(ngModel)]="date2" #dateref="ngModel"  (change)="onEndDateChange()" required/>
+<div *ngIf="dateref.invalid && (dateref.touched || userForm.submitted)" class="errormes">Date is required</div>
+<div *ngIf="dateRangeInvalid" class="errormes">Date range invalid</div>
+</div>
+</div>
 <br/>
 <br/>
 
 <label>Time in:</label>
-<input type="time" name="timein" [(ngModel)]="timein"/>
+<input type="time" name="timein" [(ngModel)]="timein" #timecheckein="ngModel" required/>
+<div *ngIf="timecheckein.invalid && (timecheckein.touched || userForm.submitted)" class="errormes">timein is required</div>
+
 <br/>
 <br/>
 <label>Time out:</label>
-<input type="time"  name="timeout" [(ngModel)]="timeout"/>
+<input type="time"  name="timeout" [(ngModel)]="timeout" #timecheckedout="ngModel" required/>
+<div *ngIf="timecheckedout.invalid && (timecheckedout.touched || userForm.submitted)" class="errormes">timeout is required</div>
+
 <br/>
 <br/>
 
@@ -63,7 +75,7 @@ required
   <div *ngIf="(cityRef.invalid && (cityRef.touched || userForm.submitted))" class="errormes">
     Please select a city.
   </div>
-  <button type="submit" >Submit</button>
+  <button type="submit">Submit</button>
 </form>
 
 
