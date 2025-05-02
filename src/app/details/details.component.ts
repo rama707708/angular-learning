@@ -20,9 +20,10 @@ export class DetailsComponent implements OnInit{
   }
   async showProducts(){
 // Suggested code may be subject to a license. Learn more: ~LicenseLog:2303937232.
-const res = await this.productService.getProducts();
-const products = await res.json();
-console.log(products);
+    const response = await this.productService.getProducts();
+    console.log(response);
+    const products  = response.products;
+    console.log(products);
   }
 
 }

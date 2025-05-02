@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class InterceptorService implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-
+debugger;
     const userinfo = sessionStorage.getItem('userinfo');
     console.log("userinfo from session:",userinfo);
     if (userinfo) {
