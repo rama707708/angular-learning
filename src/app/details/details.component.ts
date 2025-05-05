@@ -3,15 +3,18 @@ import { TemplateFormComponent } from "../template-form/template-form.component"
 import { ReactiveFormComponent } from "../reactive-form/reactive-form.component";
 import { JavascriptFormComponent } from "../javascript-form/javascript-form.component";
 import { productservice } from '../services/product-service';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-details',
   standalone: true,
-  imports: [TemplateFormComponent, ReactiveFormComponent, JavascriptFormComponent],
+  imports: [TemplateFormComponent, ReactiveFormComponent, JavascriptFormComponent,CommonModule,FormsModule],
   templateUrl: './details.component.html',
   styleUrl: './details.component.css'
 })
 export class DetailsComponent implements OnInit{
+  radiovalue:string = '';
   constructor (private productService:productservice){
 
   }
@@ -26,4 +29,9 @@ export class DetailsComponent implements OnInit{
     console.log(products);
   }
 
+  userselectedradio(value:any){
+  this.radiovalue=value;
+
+
+}
 }

@@ -1,9 +1,26 @@
 
+
+<div class="radio-row">
+<input type="radio"  value="templateform" [(ngModel)]="radiovalue" (change)="userselectedradio('templateform')"  id="templateform" />
+<label for="templateform">Templateform</label><br/>
+
+<input type="radio" value="reactiveform" [(ngModel)]="radiovalue" (change)="userselectedradio('reactiveform')" id="reactiveform" />
+<label for="reactiveform">Reactiveform</label><br/>
+
+<input type="radio" value="javascriptform" [(ngModel)]="radiovalue" (change)="userselectedradio('javascriptform')" id="javascriptform" />
+<label for="javascriptform">Javascriptform</label><br/>
+</div>
+
+<div *ngIf="radiovalue=='templateform'">
 <h5>Template form</h5>
 <app-template-form> </app-template-form>
-
+</div>
+<div *ngIf="radiovalue=='reactiveform'">
 <h5>Reactive form</h5>
 <app-reactive-form> </app-reactive-form>
+</div>
 
+<div *ngIf="radiovalue=='javascriptform'">
 <h5>Javascript form</h5>
 <app-javascript-form></app-javascript-form>
+</div>
