@@ -1,16 +1,27 @@
+import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HighlightDirective } from '../highlight.directive';
 
 @Component({
   selector: 'app-child',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule,CommonModule,HighlightDirective],
   templateUrl: './child.component.html',
   styleUrl: './child.component.css'
 })
 
 export class ChildComponent implements OnChanges {
+  username: string = '';
+  imageUrl = 'https://angular.io/assets/images/logos/angular/angular.png';
+  isDisabled = false;
+  isSpecial = true;
+  myColor = 'pink';
+  titleText = 'Angular Property Binding Demo';
+  isHighlighted:boolean=true;
+  selectedColor:string='';
  @Input() name: string='';
+ @Input() favbook: string='';
 userInputname='';
 @Output() changeNameEvent =new EventEmitter<string>();
 @Output() emitEmojiselected =new EventEmitter<string>();
@@ -19,7 +30,6 @@ userInputname='';
 selectEmoji(selectedEmoji:string) {
   this.emitEmojiselected.emit(selectedEmoji);
   }
-
 
   emitUserName() {
     if(this.userInputname){

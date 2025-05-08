@@ -1,61 +1,102 @@
-
 <!-- Suggested code may be subject to a license. Learn more: ~LicenseLog:1035619298. -->
-<div class="userform">
-    <form>
-    <label>Name:</label>
-    <input type="text" name="name" [(ngModel)]="name" #username="ngModel" pattern="^[A-Za-z ]+$" required/>
+
+<form [formGroup]="reactiveForm" (ngSubmit)="onSubmit()">
+  <div class="userform">
     
-    <br/>
-    <br/>
+    <br />
+    <br />
     <div class="row col-12">
-      <div class="col">
-    <label>Date1:</label>
-    <input type="date"  name="date1" [(ngModel)]="date1" #dateref="ngModel"  required/>
-    </div>
-    <div class="col">
-    <label>Date2:</label>
-    <input type="date"  name="date2" [(ngModel)]="date2" #dateref="ngModel" required/>
-    </div>
-    </div>
-    <br/>
-    <br/>
-    
-    <label>Time in:</label>
-    <input type="time" name="timein" [(ngModel)]="timein" #timecheckein="ngModel" required/>
-    
-    <br/>
-    <br/>
+      <div class="col-3">
+        <label>Name:</label>
+        <input type="text" name="name" formControlName="name" />
+        <span *ngIf="reactiveForm.controls.name.errors?.['required'] && (reactiveForm.controls.name.touched ||isSubmitted)" class="error">Filed is required</span>
+        <span *ngIf="reactiveForm.controls.name.touched && reactiveForm.controls.name.errors?.['pattern']" class="error">only characters are allowed</span>
+
+        </div>
+      <div class="col-3">
+        <label>Date1:</label>
+        <input type="date" name="Date1" formControlName="Date1" (change)="onStartDateChange()" [(ngModel)]="date1" />
+        <span *ngIf="reactiveForm.controls.Date1.errors?.['required']&& (reactiveForm.controls.Date1.touched || isSubmitted)" class="error">Date is required</span>
+       
+      </div>
+      <div class="col-3">
+        <label>Date2:</label>
+        <input type="date" name="Date2" (change)="onEndDateChange()" [(ngModel)]="date2" formControlName="Date2" />
+        <span *ngIf="reactiveForm.controls.Date2.touched && reactiveForm.controls.Date2.errors?.['required']" class="error">Date is required</span>
+        <span *ngIf="reactiveForm.controls.Date2.errors?.['required']&& (reactiveForm.controls.Date2.touched || isSubmitted)" class="error">Date range is invalid</span>
+       </div>
+
+       <div class="col-3">
+        <label>Time in:</label>
+        <input type="time" name="timein" formControlName="timein" />
+      </div>
+     
+
+  <div class="col-3 mt-4">
     <label>Time out:</label>
-    <input type="time"  name="timeout" [(ngModel)]="timeout" #timecheckedout="ngModel" required/>
-    
-    <br/>
-    <br/>
-    
+    <input type="time" name="timeout" formControlName="timeout" />
+  </div>
+   
+  <div class="col-3 mt-4">
     <label>Signup:</label>
-    <input type="radio" name="decsion" [(ngModel)]="decsion" required #decisionRef="ngModel" value="yes"/>Yes
-    <input type="radio" name="decsion" [(ngModel)]="decsion" value="no"/>No
-    <br/>
-    <br/>
-    
+    <input type="radio" name="signup" formControlName="signup" required value="yes" />Yes
+    <input type="radio" name="signup" formControlName="signup" value="no" />No
+    <span *ngIf="reactiveForm.controls.signup.errors?.['required']&& isSubmitted" class="error">please select yes/no</span>
+  </div>
+  <div class="col-3 mt-4">
     <label>Hobbies:</label>
-    <input type="checkbox" name="Reading" required [(ngModel)]="Reading" #readingRef="ngModel" /> Reading
-    <input type="checkbox" name="Coding" required [(ngModel)]="Coding" #codingRef="ngModel"/>Coding
-    <input type="checkbox" name="Traveling" required [(ngModel)]="Traveling" #travelingRef="ngModel"/>Traveling
-    <br/>
-    <br/>
-    
+    <input type="checkbox" name="checkbox" value="Reading" (change)="onCheckboxChange($event)" /> Reading
+    <input type="checkbox" name="checkbox" value="Coding" (change)="onCheckboxChange($event)" />Coding
+    <input type="checkbox" name="checkbox" value="Traveling" (change)="onCheckboxChange($event)"/>Traveling
+    <span *ngIf="reactiveForm.get('hobbies')?.errors?.['required'] && isSubmitted" class="error">select one checkbox</span>
+  </div> 
+  </div>
+  <div class="col-3 mt-4">
     <label>your favorite cities:</label>
-    <select name="options" id="options" [(ngModel)]="selectedCity"
-    required>
-    
-        <option value="">-- Select a city --</option>
-        <option value="delhi">delhi</option>
-        <option value="hyderbad">hyderbad</option>
-        <option value="chennai">chennai</option>
-        <option value="vijayawada">vijayawada</option>
-    
-      </select>
-      
-      <button type="submit">Submit</button>
-    </form>
+    <select name="dropdown" id="options" formControlName="dropdown" (change)="onCitySelect()" required>
+      <option value="">-- Select a city --</option>
+      <option value="delhi">delhi</option>
+      <option value="hyderbad">hyderbad</option>
+      <option value="chennai">chennai</option>
+      <option value="vijayawada">vijayawada</option>
+    </select>
+    <span *ngIf="reactiveForm.controls.dropdown.errors?.['required'] && isSubmitted" class="error"> Required</span>
+  </div>
+
+  <div class="col-3 mt-4">
+    <label>your favorite state:</label>
+    <select name="dropdown" id="options" formControlName="statedropdown" required>
+      <option value="">-- Select a city --</option>
+      <option value="Andhra">Andhra</option>
+      <option value="Telengana">Telengana</option>
+      <option value="Tamilnadu">tamilnadu</option>
+    </select>
+    <span *ngIf="reactiveForm.controls.statedropdown.errors?.['required'] && isSubmitted" class="error"> Required</span>
+  </div>
+
+  <div class="col-3 mt-4">
+    <label>Country:</label>
+    <select name="dropdown" id="options" formControlName="country" (change)="oncountryselected()" required>
+      <option value="">-- Select a country --</option>
+      <option value="india">India</option>
+      <option value="usa">Usa</option>
+    </select>
+    <span *ngIf="reactiveForm.controls.country.errors?.['required'] && isSubmitted" class="error"> Required</span>
+  </div>
+
+  <div class="col-3 mt-4">
+    <label>state:</label>
+    <select name="dropdown" id="options" formControlName="country" required>
+      <option value="">-- Select a state --</option>
+      <option *ngFor="let states of states" [value]="states">-- {{states}} --</option>
+
+    </select>
+    <span *ngIf="reactiveForm.controls.country.errors?.['required'] && isSubmitted" class="error"> Required</span>
+  </div>
+   
     </div>
+    <div class="mt-4 btn-style">
+      <button type="submit" (click)="onSubmit()">Submit</button>
+    </div>
+
+</form>

@@ -10,4 +10,58 @@
     <button (click)="selectEmoji('❤️')">❤️</button>
     <button (click)="selectEmoji('🚀')">🚀</button>
 
+    <h2 [title]="titleText">Hover to see title binding</h2>
+
+<!-- Image src binding -->
+<img [src]="imageUrl" alt="Angular Logo" width="100" />
+
+<!-- Disabled button binding -->
+<button [disabled]="isDisabled">Click Me</button>
+
+<!-- Class binding -->
+<!-- <p [class.special]="isSpecial">This text has 'special' class if isSpecial is true</p> -->
+
+<!-- <p [style.color]="isSpecial ? 'orange' : 'blue'">
+    This text changes color based on isSpecial
+  </p> -->
+ <p [class.orange-text]="isSpecial" [class.blue-text]="!isSpecial">
+    This text changes class based on isSpecial
+  </p>
+  -----------------
+  <p [ngClass]="{ 
+    'red': selectedColor === 'red', 
+    'blue': selectedColor === 'blue', 
+    'green': selectedColor === 'green' 
+  }">
+    This text will change color!
+  </p>
+  
+  <button (click)="selectedColor = 'red'">Red</button>
+  <button (click)="selectedColor = 'blue'">Blue</button>
+  <button (click)="selectedColor = 'green'">Green</button>
+  ---------------
+
+
+    You're binding to the ngClass input property of the NgClass directive. -->
+
+<!-- <p [ngStyle]="{ color: isSpecial ? 'orange' : 'blue' }">
+    This text changes color based on isSpecial
+  </p> -->
+  
+
+<!-- Style binding -->
+<p [style.color]="myColor">This text is styled with dynamic color</p>
+
+<p [appHighlight]="'lightblue'">This gets highlighted using a custom directive!</p>
+<!-- Directive property binding is just a way of passing values from your component to a directive — either built-in or custom — using square bracket syntax: -->
+   <!-- two way binding -->
+   <!-- What's happening here?-->
+   [(ngModel)]="username" does two things:
    
+   Binds the value from username to the input field.
+   
+
+   <input [(ngModel)]="username" placeholder="Enter username" />
+   <p>You typed: {{ username }}</p>
+   
+   <p>Hello welcome {{ favbook }}!</p>

@@ -1,6 +1,8 @@
+
+
 <app-child 
 
-[name]="parentName"
+[name]="parentName" [favbook]="bookname"
 (emitEmojiselected)="showEmoji($event)"
 (changeNameEvent)="changeName($event) ">
 </app-child>
@@ -12,6 +14,7 @@
 <button [id]="'edit-' + i"  (click)="onEdit(i)">Edit</button>
 <button [id]="'delete-' + i"  (click)="onDelete(i)">Delete</button>
 <p>Current parentName: {{parentName}}</p>
+
 </li>
 </ul>
 

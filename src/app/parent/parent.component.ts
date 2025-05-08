@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-parent',
   standalone: true,
-  imports: [ChildComponent, CommonModule, LoggerComponent,FormsModule],
+  imports: [ChildComponent, CommonModule,FormsModule],
   templateUrl: './parent.component.html',
   styleUrl: './parent.component.css',
 })
@@ -18,6 +18,7 @@ export class ParentComponent {
   message: string = '';
   names: string[] = [];
   parentName: string = '';
+  bookname: string = 'Angular';
   selectedEmoji:string='';
   changeName(nameFromChild: string) {
     console.log('Received name from child:', nameFromChild);

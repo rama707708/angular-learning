@@ -1,24 +1,9 @@
-*************************************
-REQUIREMENTS:
-**************************************
-Add product using product component
-List the added product in product list component
-In product list component each product should have add to cart button
-On clicking the button product should add to the cart
-***************************************
-Next step: Validation
-****************************************
-Add validation to the product component 
-price should be greater than 0
-In cart - if the product is already available increase the count and show price
-show sum value in cart
-In cart on clicking remove button - instead of removing product from cart decrease count by one.
-In cart if the product count is already one then remove the product from cart
-*****************************************
-3 components-in each component -name-date-in-and out time
-radio button-tea/coffee.
-hobbies
-dropdown-cities
+Write an employee management application.
 
-
-
+Login page
+After login, based on the user role application has to go home page - if user is admin and profile page if user is employee
+admin can see employee list and perform sorting and search operation.
+admin and employee should have a post menu, they can view task list add/edit/delete task
+employee can see only their post - with sorting, filter option
+admin can see all employees post - with sorting, filter option
+validation is must wherever required
