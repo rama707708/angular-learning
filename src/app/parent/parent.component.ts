@@ -17,9 +17,12 @@ export class ParentComponent {
   showChild: boolean = true;
   message: string = '';
   names: string[] = [];
+  sport: string = 'cricket';
   parentName: string = '';
   bookname: string = 'Angular';
   selectedEmoji:string='';
+  wishes:string='';
+
   changeName(nameFromChild: string) {
     console.log('Received name from child:', nameFromChild);
     this.names.push(nameFromChild);
@@ -39,5 +42,9 @@ export class ParentComponent {
   showEmoji(emoji:string){
     this.selectedEmoji = emoji;
 
+  }
+  handleWishes(message: string) {
+    this.wishes = message;
+    console.log(`received from child ${this.wishes}`)
   }
 }

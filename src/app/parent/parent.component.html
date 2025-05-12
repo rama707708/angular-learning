@@ -1,11 +1,15 @@
 
 
 <app-child 
-
+(greet)="handleWishes($event)" [Myfavsport]="sport"
 [name]="parentName" [favbook]="bookname"
 (emitEmojiselected)="showEmoji($event)"
 (changeNameEvent)="changeName($event) ">
+
 </app-child>
+<label>my fav sport</label>
+<h2>{{sport}}</h2>
+<h1>{{ wishes }}</h1>
 <h2>Selected Emoji: {{ selectedEmoji }}</h2>
 <ul>
   <li *ngFor="let name of names; let i = index">

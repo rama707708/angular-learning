@@ -22,10 +22,16 @@ export class ChildComponent implements OnChanges {
   selectedColor:string='';
  @Input() name: string='';
  @Input() favbook: string='';
+ @Input() Myfavsport: string = '';
 userInputname='';
 @Output() changeNameEvent =new EventEmitter<string>();
 @Output() emitEmojiselected =new EventEmitter<string>();
+@Output() greet = new EventEmitter<string>();
 //@Input() data: string = '';
+
+bestWishes() {
+  this.greet.emit("best of luck");
+}
 
 selectEmoji(selectedEmoji:string) {
   this.emitEmojiselected.emit(selectedEmoji);
