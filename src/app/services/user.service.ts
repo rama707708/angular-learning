@@ -27,4 +27,19 @@ export class UserService {
     })
 }
 
+/* providing access token in bearer */
+getUserInfo(){
+  return this.http.get('https://dummyjson.com/user/me');
+
+}
+
+getallusers(){
+  return this.http.get('https://dummyjson.com/users');
+
+ 
+
+}
+
+
+
 }
