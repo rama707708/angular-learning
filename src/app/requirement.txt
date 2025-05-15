@@ -8,7 +8,7 @@ After login, based on the user role application has to go
 
 admin can see employee list and perform sorting and search operation.
 
-admin and employee should have a post menu, they can view task list add/edit/delete task
+admin and employee should have a post menu, they can view post list add/edit/delete task
 employee can see only their post - with sorting, filter option
 admin can see all employees post - with sorting, filter option
 validation is must wherever required.

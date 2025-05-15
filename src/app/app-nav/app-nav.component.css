@@ -2,3 +2,22 @@
     cursor:pointer;
     margin-right: 50px;
 }
+/* ul {
+    list-style-type: none;
+    padding-left: 0;
+  } */
+  /* nav > ul > li {
+    display: inline-block;
+    margin-right: 20px;
+    position: relative;
+  }
+  nav ul ul {
+    display: block;
+    position: absolute;
+    background: #f2f2f2;
+    margin-top: 5px;
+  }
+  nav ul ul li {
+    display: block;
+    padding: 5px 10px;
+  } */

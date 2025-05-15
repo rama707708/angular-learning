@@ -13,6 +13,7 @@ import { HomeComponent } from './home/home.component';
 import { LogoutComponent } from './logout/logout.component';
 import { DetailsComponent } from './details/details.component';
 import { ProfileComponent } from './profile/profile.component';
+import { TodoComponent } from './todo/todo.component';
 
 export const routes: Routes = [
     {
@@ -60,6 +61,9 @@ export const routes: Routes = [
             },
             {
                 path:'profile', component:ProfileComponent,
+            },
+            {
+                path:'todo', component:TodoComponent,
             },
         ]
     }

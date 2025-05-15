@@ -4,7 +4,9 @@
 <table>
     <tr>
       <th>ID</th>
-      <th>firstname</th>
+      <th>firstname <div><input type="search" placeholder="search" [(ngModel)]="searchValue" (ngModelChange)="search()"/></div>
+      <div><button type="button" (click)="sorting()">sort</button></div>
+    </th>
       <th>gender</th>
     </tr>
     <tr *ngFor="let user of userList">

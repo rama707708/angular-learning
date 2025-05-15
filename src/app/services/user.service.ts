@@ -40,6 +40,30 @@ getallusers(){
 
 }
 
+searchUser(name:any){
+  return this.http.get('https://dummyjson.com/users/search?q='+name)
+
+}
+
+sortUser(){
+  return this.http.get('https://dummyjson.com/users?sortBy=firstName&order=asc');
+
+}
+
+gettodos(){
+  
+  return this.http.get('https://dummyjson.com/todos');
 
 
+}
+
+deletetodo(id:any){
+  return this.http.delete('https://dummyjson.com/todos/'+id);
+
+}
+
+getproducts(){
+  return this.http.get('https://dummyjson.com/products');
+
+}
 }
