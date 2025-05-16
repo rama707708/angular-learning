@@ -1,0 +1,11 @@
+<p>sample works!</p>
+<div class="container">
+    <h3>Search Products</h3>
+    <input type="text" [formControl]="searchControl" class="form-control" placeholder="Type to search..." />
+  
+    <ul class="list-group mt-3" *ngIf="results.length > 0">
+      <li class="list-group-item" *ngFor="let product of results">
+        {{ product.title }} - ${{ product.price }}
+      </li>
+    </ul>
+  </div>

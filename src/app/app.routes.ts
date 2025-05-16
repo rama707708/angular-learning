@@ -14,6 +14,8 @@ import { LogoutComponent } from './logout/logout.component';
 import { DetailsComponent } from './details/details.component';
 import { ProfileComponent } from './profile/profile.component';
 import { TodoComponent } from './todo/todo.component';
+import { SampleComponent } from './sample/sample.component';
+import { MainproductsComponent } from './mainproducts/mainproducts.component';
 
 export const routes: Routes = [
     {
@@ -65,6 +67,14 @@ export const routes: Routes = [
             {
                 path:'todo', component:TodoComponent,
             },
+            {
+                path:'sample', component:SampleComponent,
+            },
+
+            {
+                path:'mainproducts', component:MainproductsComponent,
+            },
+
         ]
     }
     

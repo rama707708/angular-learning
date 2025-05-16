@@ -3,38 +3,88 @@
       <th>ID</th>
       <th>Todo</th>
       <th>completed</th>
-      <th id="edit">Edit</th>
+      <th>Edit</th>
       <th id="Del">Delete</th>
     </tr>
     <tr *ngFor="let todo of todoData" >
       <td > {{todo.id}}</td>
       <td > {{todo.todo}}</td>
       <td > {{todo.completed}}</td>
-<div class="d-flex gap-2">
-<button id="edit" class="btn btn-primary" (click)="onEdit()">Edit</button>
-<button id="del" class="btn btn-danger" (click)="onDelete(todo)">Delete</button>
-</div>
-
+<td>
+<button id="edit" class="btn btn-primary" (click)="onEdit(todo)">Edit</button>
+</td>
+<td>
+  <button id="del" class="btn btn-danger" (click)="onDelete(todo)">Delete</button>
+</td>
  </tr>
  </table>
-
- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
     
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Message</h5>
+        <h5 class="modal-title" id="deleteModalLabel">Message</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       
       <div class="modal-body">
-        This is a Bootstrap modal message.
+       {{id}} deleted succesfully
       </div>
       
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      </div>
+      </div> 
       
     </div>
   </div>
 </div>
+
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    
+      <div class="modal-header">
+        <h5 class="modal-title" id="editModalLabel">Message</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      
+      <div class="modal-body">
+<!-- Suggested code may be subject to a license. Learn more: ~LicenseLog:1608719092. -->
+       {{id}} {{completed}}
+       <input type="text" [(ngModel)]="todorowData"/>
+      
+      </div>
+
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="save()">Save</button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div> 
+      
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    
+      <div class="modal-header">
+        <h5 class="modal-title" id="successModalLabel">Message</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      
+      <div class="modal-body">
+       {{id}} edited succesfully
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div> 
+      
+    </div>
+  </div>
+</div>
+

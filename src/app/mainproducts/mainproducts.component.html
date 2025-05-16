@@ -1,0 +1,66 @@
+<table>
+    <tr>
+      <th>Id</th>
+      <th>Brand</th>
+      <th>Category</th>
+      <th>Image</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+    <tr *ngFor="let product of allProducts">
+      <td>{{product.id}}</td>
+      <td>{{product.brand}}</td>
+      <td>{{product.category}}</td>
+      <td><img [src]="product.images" [alt]="product.tile" width="50" height="60"/></td>
+      <td><button class="btn-color" (click)="onEdit(product)" type="button">Edit</button></td>
+      <td><button class="btn-color" (click)="onDelete(product)" type="button">Delete</button></td>
+    </tr>
+  </table>
+
+  <div class="modal fade" id="delModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalLabel">Delete</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        
+        <div class="modal-body">
+          Deleted succesfully!
+        </div>
+        
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+         
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
+
+  <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalLabel">Edit</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        
+        <div class="modal-body">
+            <input type="text" [(ngModel)]="selectedProduct.brand"/>
+            <input type="text" [(ngModel)]="selectedProduct.category"/>
+
+        </div>
+        
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+         
+        </div> <button type="button" class="btn btn-secondary"  (click)="save()" data-bs-dismiss="modal">Save</button>
+        
+      </div>
+    </div>
+  </div>
+  

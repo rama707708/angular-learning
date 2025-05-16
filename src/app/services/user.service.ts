@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { BehaviorSubject, catchError, map, Observable, of, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -62,8 +62,35 @@ deletetodo(id:any){
 
 }
 
+edittodo(id:any,todo:any){
+  return this.http.put('https://dummyjson.com/todos/'+id, todo);
+
+}
+
 getproducts(){
   return this.http.get('https://dummyjson.com/products');
 
 }
+searchProducts(query: string) {
+  return this.http.get<any>(`https://dummyjson.com/products/search?q=${query}`).pipe(
+     // extract only products
+    catchError(error => {
+      console.error('Error occurred:', error);
+      return of([]); // return empty array on error
+    })
+  );
+}
+
+getAllProducts(){
+  return this.http.get('https://dummyjson.com/products');
+
+}
+editProducts(id:any,products:any){
+  return this.http.patch('https://dummyjson.com/products/'+id, products);
+
+}
+deleteProducts(id:any){
+  return this.http.delete('https://dummyjson.com/products/'+id);
+}
+
 }

@@ -5,7 +5,7 @@ import { Directive, ElementRef, Input, OnInit } from '@angular/core';
   standalone: true
 })
 export class HighlightDirective implements OnInit {
-  @Input('appHighlight') color: string = 'yellow';
+  @Input('appHighlight') color: string = '';
 
   constructor(private el: ElementRef) {}
 
