@@ -16,6 +16,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { TodoComponent } from './todo/todo.component';
 import { SampleComponent } from './sample/sample.component';
 import { MainproductsComponent } from './mainproducts/mainproducts.component';
+import { employeelistGuard } from './employeelist.guard';
+import { childguard } from './childguard.guard';
 
 export const routes: Routes = [
     {
@@ -59,7 +61,7 @@ export const routes: Routes = [
                 path:'logout', component:LogoutComponent,
             },
             {
-                path:'Details', component:DetailsComponent,
+                path:'Details', component:DetailsComponent, canDeactivate:[childguard]
             },
             {
                 path:'profile', component:ProfileComponent,
@@ -72,7 +74,7 @@ export const routes: Routes = [
             },
 
             {
-                path:'mainproducts', component:MainproductsComponent,
+                path:'mainproducts', component:MainproductsComponent, canActivate: [employeelistGuard]
             },
 
         ]

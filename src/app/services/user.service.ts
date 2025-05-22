@@ -86,6 +86,7 @@ getAllProducts(){
 
 }
 editProducts(id:any,products:any){
+  delete products.id;
   return this.http.patch('https://dummyjson.com/products/'+id, products);
 
 }

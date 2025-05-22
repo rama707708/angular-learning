@@ -5,6 +5,7 @@ import { JavascriptFormComponent } from "../javascript-form/javascript-form.comp
 import { productservice } from '../services/product-service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { CanComponentDeactivate } from '../userlist/candeactivate';
 
 @Component({
   selector: 'app-details',
@@ -13,11 +14,28 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './details.component.html',
   styleUrl: './details.component.css'
 })
-export class DetailsComponent implements OnInit{
+export class DetailsComponent implements OnInit , CanComponentDeactivate{
   radiovalue:string = '';
+  isDirty: boolean = false;
   constructor (private productService:productservice){
-
+   
   }
+  canDeactivate(): boolean {
+    if (!this.isDirty) {
+      return true;
+    }
+    else {
+    const confirmLeave = confirm('You have unsaved changes. Are you sure you want to leave?');
+    if (confirmLeave) {
+      this.isDirty = false; // reset state
+    }
+    return confirmLeave;
+  }
+    
+     
+  }
+
+  
   async ngOnInit(){
     await this.showProducts();
   }
@@ -31,7 +49,7 @@ export class DetailsComponent implements OnInit{
 
   userselectedradio(value:any){
   this.radiovalue=value;
-
+  this.isDirty = true;
 
 }
 }
