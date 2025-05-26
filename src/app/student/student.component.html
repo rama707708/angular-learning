@@ -1,0 +1,44 @@
+<h3>Student Table</h3>
+<button type="button" class="btn btn-primary" (click)="onAddStudent()">
+  Add Student
+</button>
+<input type="search" id="search" (input)="searchStudents($event)" placeholder="Search by name" />
+<table>
+<tr>
+<th>Student ID</th>
+<th>Name</th>
+<th>Studenttype</th>
+<th>Grade</th>
+</tr>
+<tr *ngFor="let student of filterStudent">
+<td>{{student.id}}</td>
+<td>{{student.name}}</td>
+<td>{{student.studenttype}}</td>
+<td>{{calculateGrade(student)}}</td>
+</tr>
+</table>
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalLabel">Delete</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      
+      <div class="modal-body">
+        Added succesfully!
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+       
+      </div>
+      
+    </div>
+  </div>
+</div>

@@ -18,6 +18,7 @@ import { SampleComponent } from './sample/sample.component';
 import { MainproductsComponent } from './mainproducts/mainproducts.component';
 import { employeelistGuard } from './employeelist.guard';
 import { childguard } from './childguard.guard';
+import { StudentComponent } from './student/student.component';
 
 export const routes: Routes = [
     {
@@ -75,6 +76,9 @@ export const routes: Routes = [
 
             {
                 path:'mainproducts', component:MainproductsComponent, canActivate: [employeelistGuard]
+            },
+            {
+                path:'student', component:StudentComponent, 
             },
 
         ]
