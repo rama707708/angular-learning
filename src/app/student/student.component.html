@@ -3,18 +3,29 @@
   Add Student
 </button>
 <input type="search" id="search" (input)="searchStudents($event)" placeholder="Search by name" />
+<button type="button" class="btn btn-primary" (click)="deleteSelected()">DleteSelected</button>
 <table>
 <tr>
+<input type="checkbox" id="selectAll" name="selectAll" (change)="selectAll($event)" [checked]="allSelected">
 <th>Student ID</th>
 <th>Name</th>
 <th>Studenttype</th>
 <th>Grade</th>
+<th>Edit</th>
+<th>Delete</th>
 </tr>
-<tr *ngFor="let student of filterStudent">
+<tr *ngFor="let student of filterStudent; let i= index">
+<input type="checkbox" id="id{{i}}" name="checkbox-{{i}}" [(ngModel)]="student.isSelected">
 <td>{{student.id}}</td>
 <td>{{student.name}}</td>
 <td>{{student.studenttype}}</td>
 <td>{{calculateGrade(student)}}</td>
+<td><button type="button" class="btn btn-primary" (click)="onEditStudent(student)">
+  Edit
+</button></td>
+<td><button type="button" class="btn btn-primary" (click)="onDeleteStudent(i)">
+  Delete
+</button></td>
 </tr>
 </table>
 <!-- Button trigger modal -->
@@ -22,21 +33,71 @@
 
 <!-- Modal -->
 <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
     
       <div class="modal-header">
-        <h5 class="modal-title" id="modalLabel">Delete</h5>
+        <h5 class="modal-title" id="modalLabel">Add student</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       
       <div class="modal-body">
-        Added succesfully!
+        <div class="row">
+ <div class="col-6">
+        <label class="labelstyle">Name</label>
+      <input type="text" id="name" [(ngModel)]="name" placeholder="Name"/>
+       <span class="error"*ngIf="requiredname">Name is required</span>
+</div>
+ <div class="col-6">
+      <label class="labelstyle">Id</label>
+      <input type="text" Id="Id" [(ngModel)]="id"  [disabled]="idDisable" placeholder="Id"/>
+       <span class="error"*ngIf="requiredid">id is required</span>
+       <span class="error"*ngIf="duplicateId">id already</span>
+ </div>
+ <div class="col-6">
+      <label class="labelstyle">Science</label>
+      <input type="text" id="Science" [(ngModel)]="science" placeholder="Science"/>
+       <span class="error"*ngIf="requiredsubject">subject is required</span>
+       <span class="error"*ngIf="validNumberError">Not a valid number</span>
+</div>
+<div class="col-6">
+      <label class="labelstyle">Math</label>
+      <input type="text" id="Math" [(ngModel)]="math" placeholder="Math"/>
+       <span class="error"*ngIf="requiredsubject">subject is required</span>
+       <span class="error"*ngIf="validNumberError">Not a valid number</span>
+</div>
+<div class="col-6">
+      <label class="labelstyle">English</label>
+      <input type="text" id="English" [(ngModel)]="english" placeholder="English"/>
+       <span class="error" *ngIf="requiredsubject">subject is required</span>
+       <span class="error"*ngIf="validNumberError">Not a valid number</span>
+</div>
+<div class="col-6">
+      <label class="labelstyle">Social</label>
+      <input type="text" id="Social" [(ngModel)]="social" placeholder="Social"/>
+       <span class="error"*ngIf="requiredsubject">subject is required</span>
+       <span class="error"*ngIf="validNumberError">Not a valid number</span>
+</div>
+<div class="col-6">
+      <label class="labelstyle">Computer</label>
+      <input type="text" id="Computer" [(ngModel)]="computer" placeholder="Computer"/>
+         <span class="error"*ngIf="requiredsubject">subject is required</span>
+         <span class="error"*ngIf="validNumberError">Not a valid number</span>
+</div>
+<div class="col-6">
+    <label class="labelstyle">Studenttype</label>
+     <select id="studenttype" [(ngModel)]="studenttype">
+      <option value="R">Regular</option>
+      <option value="E">Extra</option>
+    </select>
+    <span class="error"*ngIf="requiredstudenttype">studenttype is required</span>
+</div>
+</div>
       </div>
       
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-       
+        <button type="button" class="btn btn-secondary" (click)="save()">Save</button>
       </div>
       
     </div>

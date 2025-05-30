@@ -1,7 +1,16 @@
 table{
     border: 2px solid black;
+    margin-left: 100px;
 }
 
 tr,th,td{
     border:1px solid black;
+}
+
+.labelstyle{
+    width: 80px !important;
+}
+
+.error{
+    color:red;
 }
