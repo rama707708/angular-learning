@@ -28,7 +28,12 @@ export class StudentComponent implements OnInit, AfterViewInit {
   idDisable = false;
   duplicateId = false;
   isAllSelected:boolean=false;
-  validNumberError:boolean=false;
+  validScienceError:boolean=false;
+  validMathError: boolean=false;
+  validSocialError: boolean=false;
+  validEnglishError: boolean=false;
+  validComputerError: boolean=false;
+
   constructor() {
   }
 
@@ -70,7 +75,15 @@ selectedStudents.forEach((student:any)=>{
 
 });
 this.filterStudent=this.students;
-sessionStorage.setItem('students',JSON.stringify(this.students));
+
+if(!this.students||this.students.length==0){
+this.students=[];
+sessionStorage.removeItem('students');
+}
+else{
+  sessionStorage.setItem('students',JSON.stringify(this.students));
+}
+
   }
 
 selectAll(event:any){
@@ -151,16 +164,34 @@ student.isSelected=event.target.checked;
       const numberOnlyRegex = /^[0-9]*$/;
       debugger;
       this.requiredsubject = false;
-      this.validNumberError=false;
-
-    if(!numberOnlyRegex.test(this.science)||!numberOnlyRegex.test(this.math)
-      ||!numberOnlyRegex.test(this.english)||!numberOnlyRegex.test(this.social)
-      ||!numberOnlyRegex.test(this.computer) || this.science>100 || this.math>100||this.english>100||this.social>100||this.computer>100){
-        this.validNumberError=true;
+      this.validScienceError=false;
+      
+    if(!numberOnlyRegex.test(this.science)|| this.science>100){
+        this.validScienceError=true;
         isValid=false;
     }
-     
+    if(!numberOnlyRegex.test(this.math)|| this.math>100)
+      {
+this.validMathError=true;
+isValid=false;
+      }
+      if(!numberOnlyRegex.test(this.english)|| this.english>100)
+      {
+this.validEnglishError=true;
+isValid=false;
+      }
+      if(!numberOnlyRegex.test(this.social)|| this.social>100)
+      {
+this.validSocialError=true;
+isValid=false;
+      }
+      if(!numberOnlyRegex.test(this.computer)|| this.computer>100)
+      {
+this.validComputerError=true;
+isValid=false;
+      }
     }
+     
     if (!this.studenttype) {
       this.requiredstudenttype = true;
       isValid = false;
