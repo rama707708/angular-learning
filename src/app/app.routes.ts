@@ -19,6 +19,7 @@ import { MainproductsComponent } from './mainproducts/mainproducts.component';
 import { employeelistGuard } from './employeelist.guard';
 import { childguard } from './childguard.guard';
 import { StudentComponent } from './student/student.component';
+import { CreateuserComponent } from './createuser/createuser.component';
 
 export const routes: Routes = [
     {
@@ -80,7 +81,9 @@ export const routes: Routes = [
             {
                 path:'student', component:StudentComponent, 
             },
-
+            {
+                path:'createUser', component:CreateuserComponent, 
+            },
         ]
     }
     

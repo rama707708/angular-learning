@@ -1,1 +1,87 @@
-<p>createuser works!</p>
+<fieldset>
+    <legend>Create User</legend>
+<div class="container">
+   
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+<div class="row">
+<div>
+     <label for="name">Name:</label></div>
+     <div class="col-md-6">  
+    <input type="text" id="name" formControlName="name">
+    <div *ngIf="(myForm.get('name')?.touched || isSubmitted) && myForm.get('name')?.invalid" class="error">
+        Name is required
+      </div>
+</div>
+
+    <label for="email">Email:</label>
+    <div class="col-md-6"> 
+     <input type="email" id="email" formControlName="email">
+     <div *ngIf="(myForm.get('email')?.touched || isSubmitted) && myForm.get('email')?.invalid" class="error">
+        Email is required
+      </div>
+</div>
+
+
+    <label for="phone">phone number:</label>
+    <div class="col-md-12">
+    <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" formControlName="phone" />
+    <div *ngIf="(myForm.get('phone')?.touched || isSubmitted ) && myForm.get('phone')?.invalid" class="error">
+        phone is required
+      </div>
+</div>
+
+    <label for="address">Address:</label>
+<div class="col-md-12">
+    <textarea id="address" formControlName="address"></textarea>
+    <div *ngIf="(myForm.get('address')?.touched || isSubmitted ) && myForm.get('address')?.invalid" class="error">
+        address is required
+      </div>
+</div>
+    <label for="address">contactType:</label>
+<div class="col-md-12">
+    <select id="contactType" formControlName="contacttype">
+<!-- Suggested code may be subject to a license. Learn more: ~LicenseLog:1645343521. -->
+     <option value="">Select</option>
+    <option value="friend">Friend</option>
+    <option value="family">Family</option>
+    <option value="work">Work</option>
+    <option value="other">Other</option>
+    </select>
+
+    <div class="error" *ngIf="(myForm.get('contacttype')?.touched || isSubmitted )&& myForm.get('contacttype')?.invalid">
+     contactType is required
+    </div>
+</div>
+</div>
+
+<br/>
+    <button class="btn btn-primary" type="submit">Submit</button>
+</form>
+</div>
+<p *ngIf="myForm.valid">Form Data: {{ myForm.value | json }}</p>
+
+<!-- modal -->
+<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+      
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalLabel">Add User</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+ <p>submitted Suceesfully!</p>
+  </div>
+        </div>
+        
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+</fieldset>
