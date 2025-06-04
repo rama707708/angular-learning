@@ -1,54 +1,100 @@
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <ul *ngIf="isLoggedIn()" class="navbar-nav">
             <li class="nav-item">
                 <a class="nav-link" routerLink="home">Home</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink="child">ChildNode</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink="parent">parentNode</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink="usercard">usercardchild</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink="userlist">userlist</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink="productlist">productlist</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink="cart">cart</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink="product">product</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink="Details">Details</a>
-            </li>
-           
-             <li class="nav-item">
-                <a class="nav-link" routerLink="profile">Profile</a>
-            </li>
-               
-                    <li class="nav-item"> 
-                        <a class="nav-link" routerLink="todo">todo</a>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="nodeDropdown" role="button"
+                   data-bs-toggle="dropdown" aria-expanded="false">
+                  Node
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="nodeDropdown">
+                  <li><a class="dropdown-item" routerLink="child">ChildNode</a></li>
+                  <li><a class="dropdown-item" routerLink="parent">ParentNode</a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                   data-bs-toggle="dropdown" aria-expanded="false">
+                  User
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                    <li>
+                        <a class="nav-link" routerLink="usercard">usercardchild</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" routerLink="userlist">userlist</a>
+                    </li>
+                </ul>
+              </li>
+       
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="productDropdown" role="button"
+                   data-bs-toggle="dropdown" aria-expanded="false">
+                  Product
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="productDropdown">
+                    <li>
+                        <a class="nav-link" routerLink="productlist">productlist</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" routerLink="product">product</a>
+                    </li>
+                    <li> 
+                        <a class="nav-link" routerLink="mainproducts">MainProducts</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" routerLink="cart">cart</a>
                     </li>
 
                     <li class="nav-item"> 
                         <a class="nav-link" routerLink="sample">sample</a>
                     </li>
+                </ul>
+              </li>
 
-                    <li class="nav-item"> 
-                        <a class="nav-link" routerLink="mainproducts">MainProducts</a>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="tableDropdown" role="button"
+                   data-bs-toggle="dropdown" aria-expanded="false">
+                  Forms
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="tableDropdown">
+                    <li>
+                        <a class="nav-link" routerLink="Details">Details</a>
                     </li>
-                    <li class="nav-item"> 
+                   
+                     <li>
+                        <a class="nav-link" routerLink="profile">Profile</a>
+                    </li>
+                </ul>
+              </li>
+          
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="tableDropdown" role="button"
+                   data-bs-toggle="dropdown" aria-expanded="false">
+                  Tables
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="tableDropdown">
+                    <li > 
                         <a class="nav-link" routerLink="student">student</a>
                     </li>
+                    <li> 
+                        <a class="nav-link" routerLink="todo">todo</a>
+                    </li>
+                </ul>
+              </li>
+                   
+
+
+                    
+                    
                 
             </ul>
+
+          
            
         
     </div>

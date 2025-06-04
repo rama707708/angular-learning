@@ -1,14 +1,28 @@
-Write an employee management application.
+Build an Angular application to manage a list of contacts. 
+The app should support Create, Read, Update, and Delete (CRUD) operations
+using a form that combines multiple input fields.
 
-Login page
-After login, based on the user role application has to go 
-    home page -if user is admin---employee list page
-    profile page- if user is employee
+Form Inputs for Each Contact:
+Full Name (Text input)
+Email Address (Email input)
+Phone Number (Number or Tel input)
+Address (Textarea or multiline input)
+Contact Type (Dropdown: Friend, Family, Work, Other)
 
+CRUD Operations:
+ Add a new contact
+ View a list of all contacts
+ Edit an existing contact 
+ Delete a contact
 
-admin can see employee list and perform sorting and search operation.
+Validation Rules:
+Name: Required, min 3 characters
+Email: Required, must be a valid email
+Phone: Required, min 10 digits
+Contact Type: Required
 
-admin and employee should have a post menu, they can view post list add/edit/delete task
-employee can see only their post - with sorting, filter option
-admin can see all employees post - with sorting, filter option
-validation is must wherever required.
+Additional points:
+Store contacts in localStorage so they persist on reload
+Add a search bar to filter contacts by name or type
+Add pagination if contacts exceed 5+ entries
+Export contact list as CSV
